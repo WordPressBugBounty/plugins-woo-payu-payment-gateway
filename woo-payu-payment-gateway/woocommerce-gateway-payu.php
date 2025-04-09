@@ -5,14 +5,14 @@
  * Plugin URI: https://github.com/PayU/woo-payu-payment-gateway
  * GitHub Plugin URI: https://github.com/PayU-EMEA/woo-payu-payment-gateway
  * Description: PayU fast online payments for WooCommerce. Banks, BLIK, credit or debit cards, Installments, Apple Pay, Google Pay.
- * Version: 2.6.1
+ * Version: 2.6.2
  * Author: PayU SA
  * Author URI: http://www.payu.com
  * License: Apache License 2.0
  * Text Domain: woo-payu-payment-gateway
  * Domain Path: /lang
  * WC requires at least: 4.0
- * WC tested up to: 9.3.2
+ * WC tested up to: 9.7.1
  */
 
 use Automattic\WooCommerce\Blocks\Payments\PaymentMethodRegistry;
@@ -38,7 +38,7 @@ use Payu\PaymentGateway\Gateways\WC_Payu_Gateways;
 
 require __DIR__ . '/vendor/autoload.php';
 
-define( 'PAYU_PLUGIN_VERSION', '2.6.1' );
+define( 'PAYU_PLUGIN_VERSION', '2.6.2' );
 define( 'PAYU_PLUGIN_FILE', __FILE__ );
 define( 'PAYU_PLUGIN_STATUS_WAITING', 'payu-waiting' );
 
@@ -178,15 +178,9 @@ function payu_filter_woocommerce_valid_order_statuses_for_payment_complete( arra
 }
 
 function add_payu_gateways( array $gateways ): array {
-	$gateways[] = WC_Gateway_PayuStandard::class;
-	$gateways[] = WC_Gateway_PayuCreditCard::class;
-	$gateways[] = WC_Gateway_PayuPaypo::class;
-	$gateways[] = WC_Gateway_PayuKlarna::class;
-	$gateways[] = WC_Gateway_PayuTwistoPl::class;
-	$gateways[] = WC_Gateway_PayuInstallments::class;
-	$gateways[] = WC_Gateway_PayuBlik::class;
-	$gateways[] = WC_Gateway_PayuListBanks::class;
-	$gateways[] = WC_Gateway_PayuSecureForm::class;
+    foreach ( WC_Payu_Gateways::gateways_list() as $gateway ) {
+        $gateways[] = $gateway['class'];
+    }
 
 	return $gateways;
 }
@@ -604,7 +598,7 @@ function wc_order_item_add_action_buttons_callback( $order ) {
 						"orderStatus" => OpenPayuOrderStatus::STATUS_COMPLETED
 					];
 					$payment_method_name = $order->get_payment_method();
-					$payment_init        = WC_Payu_Gateways::gateways_list()[ $payment_method_name ]['api'];
+					$payment_init        = WC_Payu_Gateways::gateways_list()[ $payment_method_name ]['class'];
 					$payment             = new $payment_init;
 					$payment->init_OpenPayU( $order->get_currency() );
 					OpenPayU_Order::statusUpdate( $status_update );
@@ -614,7 +608,7 @@ function wc_order_item_add_action_buttons_callback( $order ) {
 				}
 				if ( ! isset( $_GET['receive-payment'] ) && isset( $_GET['discard-payment'] ) ) {
 					$payment_method_name = $order->get_payment_method();
-					$payment_init        = WC_Payu_Gateways::gateways_list()[ $payment_method_name ]['api'];
+					$payment_init        = WC_Payu_Gateways::gateways_list()[ $payment_method_name ]['class'];
 					$payment             = new $payment_init;
 					$payment->init_OpenPayU( $order->get_currency() );
 					$orderId = $order->get_transaction_id();
