@@ -5,7 +5,7 @@
  * Plugin URI: https://github.com/PayU/woo-payu-payment-gateway
  * GitHub Plugin URI: https://github.com/PayU-EMEA/woo-payu-payment-gateway
  * Description: PayU fast online payments for WooCommerce. Banks, BLIK, credit or debit cards, Installments, Apple Pay, Google Pay.
- * Version: 2.7.1
+ * Version: 2.7.2
  * Author: PayU SA
  * Author URI: http://www.payu.com
  * License: Apache License 2.0
@@ -35,7 +35,7 @@ use Payu\PaymentGateway\Gateways\WC_PayuCreditGateway;
 
 require __DIR__ . '/vendor/autoload.php';
 
-define( 'PAYU_PLUGIN_VERSION', '2.7.1' );
+define( 'PAYU_PLUGIN_VERSION', '2.7.2' );
 define( 'PAYU_PLUGIN_FILE', __FILE__ );
 define( 'PAYU_PLUGIN_STATUS_WAITING', 'payu-waiting' );
 
@@ -405,7 +405,7 @@ function installments_mini_product() {
     $lang = get_site_language();
     $currency = get_woocommerce_currency();
 
-	wp_enqueue_script( 'payu-installments-widget', 'https://static.payu.com/res/v2/widget-mini-installments.js', [], PAYU_PLUGIN_VERSION );
+	wp_enqueue_script( 'payu-installments-widget', 'https://static.payu.com/res/v2/widget-mini-installments.js' );
 
 	?>
     <div>
@@ -474,7 +474,7 @@ function installments_mini_total() {
     $lang = get_site_language();
     $currency = get_woocommerce_currency();
 
-	wp_enqueue_script( 'payu-installments-widget', 'https://static.payu.com/res/v2/widget-mini-installments.js', [], PAYU_PLUGIN_VERSION );
+	wp_enqueue_script( 'payu-installments-widget', 'https://static.payu.com/res/v2/widget-mini-installments.js' );
 
 	?>
     <tr>
@@ -535,7 +535,7 @@ function installments_mini_aware_product_block( $html, $data, $product ) {
     $lang = get_site_language();
     $currency = get_woocommerce_currency();
 
-	wp_enqueue_script( 'payu-installments-widget', 'https://static.payu.com/res/v2/widget-mini-installments.js', [], PAYU_PLUGIN_VERSION );
+	wp_enqueue_script( 'payu-installments-widget', 'https://static.payu.com/res/v2/widget-mini-installments.js' );
 
 	return "<li class=\"wc-block-grid__product\">
         <div >
