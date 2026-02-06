@@ -7,14 +7,14 @@ namespace Composer\Autoload;
 class ComposerStaticInit1b1b639d25e3f301a86ad9865ad517d0
 {
     public static $prefixLengthsPsr4 = array (
-        'P' => 
+        'P' =>
         array (
             'Payu\\PaymentGateway\\' => 20,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Payu\\PaymentGateway\\' => 
+        'Payu\\PaymentGateway\\' =>
         array (
             0 => __DIR__ . '/../..' . '/Payu',
         ),
@@ -64,17 +64,23 @@ class ComposerStaticInit1b1b639d25e3f301a86ad9865ad517d0
         'Payu\\PaymentGateway\\Blocks\\PayuKlarnaBlock' => __DIR__ . '/../..' . '/Payu/Blocks/PayuKlarnaBlock.php',
         'Payu\\PaymentGateway\\Blocks\\PayuListBanksBlock' => __DIR__ . '/../..' . '/Payu/Blocks/PayuListBanksBlock.php',
         'Payu\\PaymentGateway\\Blocks\\PayuPaypoBlock' => __DIR__ . '/../..' . '/Payu/Blocks/PayuPaypoBlock.php',
+        'Payu\\PaymentGateway\\Blocks\\PayuPragmaBlock' => __DIR__ . '/../..' . '/Payu/Blocks/PayuPragmaBlock.php',
         'Payu\\PaymentGateway\\Blocks\\PayuSecureFormBlock' => __DIR__ . '/../..' . '/Payu/Blocks/PayuSecureFormBlock.php',
         'Payu\\PaymentGateway\\Blocks\\PayuStandardBlock' => __DIR__ . '/../..' . '/Payu/Blocks/PayuStandardBlock.php',
         'Payu\\PaymentGateway\\Blocks\\PayuTwistoPlBlock' => __DIR__ . '/../..' . '/Payu/Blocks/PayuTwistoPlBlock.php',
         'Payu\\PaymentGateway\\Blocks\\PayuTwistoSliceBlock' => __DIR__ . '/../..' . '/Payu/Blocks/PayuTwistoSliceBlock.php',
         'Payu\\PaymentGateway\\Cache\\OauthCache' => __DIR__ . '/../..' . '/Payu/Cache/OauthCache.php',
+        'Payu\\PaymentGateway\\Features\\WC_Payu_Receive_Discard_Payment' => __DIR__ . '/../..' . '/Payu/Features/WC_Payu_Receive_Discard_Payment.php',
+        'Payu\\PaymentGateway\\Features\\WC_Payu_Repay_In_Order_Actions' => __DIR__ . '/../..' . '/Payu/Features/WC_Payu_Repay_In_Order_Actions.php',
+        'Payu\\PaymentGateway\\Features\\WC_Payu_Status_Retrieval_On_Thank_You' => __DIR__ . '/../..' . '/Payu/Features/WC_Payu_Status_Retrieval_On_Thank_You.php',
+        'Payu\\PaymentGateway\\Features\\WC_Payu_Waiting_Payu_Order_Status' => __DIR__ . '/../..' . '/Payu/Features/WC_Payu_Waiting_Payu_Order_Status.php',
         'Payu\\PaymentGateway\\Gateways\\WC_Gateway_PayuBlik' => __DIR__ . '/../..' . '/Payu/Gateways/WC_Gateway_PayuBlik.php',
         'Payu\\PaymentGateway\\Gateways\\WC_Gateway_PayuCreditCard' => __DIR__ . '/../..' . '/Payu/Gateways/WC_Gateway_PayuCreditCard.php',
         'Payu\\PaymentGateway\\Gateways\\WC_Gateway_PayuInstallments' => __DIR__ . '/../..' . '/Payu/Gateways/WC_Gateway_PayuInstallments.php',
         'Payu\\PaymentGateway\\Gateways\\WC_Gateway_PayuKlarna' => __DIR__ . '/../..' . '/Payu/Gateways/WC_Gateway_PayuKlarna.php',
         'Payu\\PaymentGateway\\Gateways\\WC_Gateway_PayuListBanks' => __DIR__ . '/../..' . '/Payu/Gateways/WC_Gateway_PayuListBanks.php',
         'Payu\\PaymentGateway\\Gateways\\WC_Gateway_PayuPaypo' => __DIR__ . '/../..' . '/Payu/Gateways/WC_Gateway_PayuPaypo.php',
+        'Payu\\PaymentGateway\\Gateways\\WC_Gateway_PayuPragma' => __DIR__ . '/../..' . '/Payu/Gateways/WC_Gateway_PayuPragma.php',
         'Payu\\PaymentGateway\\Gateways\\WC_Gateway_PayuSecureForm' => __DIR__ . '/../..' . '/Payu/Gateways/WC_Gateway_PayuSecureForm.php',
         'Payu\\PaymentGateway\\Gateways\\WC_Gateway_PayuStandard' => __DIR__ . '/../..' . '/Payu/Gateways/WC_Gateway_PayuStandard.php',
         'Payu\\PaymentGateway\\Gateways\\WC_Gateway_PayuTwistoPl' => __DIR__ . '/../..' . '/Payu/Gateways/WC_Gateway_PayuTwistoPl.php',
@@ -83,6 +89,7 @@ class ComposerStaticInit1b1b639d25e3f301a86ad9865ad517d0
         'Payu\\PaymentGateway\\Gateways\\WC_PayuGateway' => __DIR__ . '/../..' . '/Payu/Gateways/WC_PayuGateway.php',
         'Payu\\PaymentGateway\\Gateways\\WC_Payu_Gateways' => __DIR__ . '/../..' . '/Payu/Gateways/WC_Payu_Gateways.php',
         'Payu\\PaymentGateway\\Settings\\PayuSettings' => __DIR__ . '/../..' . '/Payu/Settings/PayuSettings.php',
+        'Payu\\PaymentGateway\\WC_Payu' => __DIR__ . '/../..' . '/Payu/WC_Payu.php',
         'ResultError' => __DIR__ . '/..' . '/openpayu/openpayu/lib/OpenPayU/ResultError.php',
     );
 

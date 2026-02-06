@@ -2,8 +2,8 @@
 Contributors: payusa
 Tags: PayU, payment, payment gateway, płatności, credit card
 Requires at least: 5.0
-Tested up to: 6.8.1
-Stable tag: 2.7.2
+Tested up to: 6.9.1
+Stable tag: 2.9.1
 Requires PHP: 7.4
 License: Apache License 2.0
 
@@ -24,21 +24,22 @@ The plugin offers the following payment methods:
 * PayU - PayPo - payer will be redirected to PayPo payment form
 * PayU - Twisto - payer will be redirected to Twisto payment form
 * PayU - Twisto pay in 3 - payer will be redirected to Twisto pay in 3 payment form
+* PayU - PragmaPay - payer will be redirected to PragmaPay payment form (only for business clients)
 
 Detailed information about each method and its configuration [can be found here](https://github.com/PayU-EMEA/woo-payu-payment-gateway).
 
 == Installation ==
-If you have any questions or would like to raise an issue please contact [our technical support](https://www.payu.pl/pomoc).
+If you have any questions or would like to raise an issue please contact [our technical support](https://polandeng.support.payu.com/s/?language=en_US).
 
 = Minimum Requirements =
-PayU merchant account - if you do not have an account you can [**register a production account**](https://poland.payu.com/en/how-to-activate-payu/) or [**register a sandbox account**](https://registration-merch-prod.snd.payu.com/boarding/#/registerSandbox/?lang=en)
+PayU merchant account - if you do not have an account you can [**register a production account**](https://poland.payu.com/commercial-offer/) or [**register a sandbox account**](https://registration-merch-prod.snd.payu.com/boarding/#/registerSandbox/?lang=en)
 
 **Note:** Module works only with `REST API` POS type (POS type is configured in PayU merchant panel after you register).
 
 Following PHP libraries are required: cURL i hash.
 
 = Automatic installation =
-Use [automatic installation and activation](https://wordpress.org/support/article/managing-plugins/#automatic-plugin-installation) available in Wordpress admin panel. Module name is `PayU EU Payment Gateway for WooCommerce`.
+Use [automatic installation and activation](https://wordpress.org/support/article/managing-plugins/#automatic-plugin-installation) available in Wordpress admin panel. Module name is `PayU GPO Payment for WooCommerce`.
 
 = Updating =
 Upon plugin update from version 1.X to version 2.X the existing config data will be automatically converted.
@@ -48,10 +49,25 @@ Upon plugin update from version 1.X to version 2.X the existing config data will
 = Does this load external javascript resources ? =
 
 Yes, it does.
-* For card payment we used [PayU Secure Form](https://developers.payu.com/en/card_tokenization.html#secureform) and for proper working it is necessary to load Secure Form JS SDK from the secure.payu.com domain. As a result, you do not need to have PCI DSS, PayU does it for you.
+* For card payment we used [PayU Secure Form](https://developers.payu.com/europe/docs/checkout/secure-form/) and for proper working it is necessary to load Secure Form JS SDK from the secure.payu.com domain. As a result, you do not need to have PCI DSS, PayU does it for you.
 * For presenting credit payment options like minimal installment amount or "buy now pay later" we used [Credit Widget](https://developers.payu.com/europe/docs/payment-solutions/credit/installments/#credit-widget-installments) and plugin loads the script from the static.payu.com domain.
 
 == Changelog ==
+= 2.9.1 - 2026-02-05 =
+* [Fix] Incorrect address when retrieving payment status
+* [Fix] "Call to a member function get_total() on bool" for WooCommerce Subscriptions
+* [Fix] sf-init.js loading in header
+
+= 2.9.0 - 2025-10-13 =
+* [Update] Better configuration checking
+
+= 2.8.0 - 2025-10-06 =
+* [Update] Change default order status from 'canceled` to 'failed' for 'CANCELED' payment notification
+* [Add] Show info about payment on Thank You page
+* [Add] 60 seconds cache for retrieve payment methods
+* [Add] PragmaPay as separate method
+* [Remove] Auto migration configuration from 1.X versions
+
 = 2.7.2 - 2025-07-09 =
 * [Fix] Limit widget script load
 
