@@ -5,32 +5,16 @@
  * Plugin URI: https://github.com/PayU/woo-payu-payment-gateway
  * GitHub Plugin URI: https://github.com/PayU-EMEA/woo-payu-payment-gateway
  * Description: PayU fast online payments for WooCommerce. Banks, BLIK, credit or debit cards, Installments, Apple Pay, Google Pay.
- * Version: 2.10.3
+ * Version: 2.11.0
  * Author: PayU SA
  * Author URI: http://www.payu.com
  * License: Apache License 2.0
  * Text Domain: woo-payu-payment-gateway
  * Domain Path: /lang
  * WC requires at least: 6.0
- * WC tested up to: 11.0.1
+ * WC tested up to: 11.1.0
  */
 
-use Automattic\WooCommerce\Blocks\Integrations\IntegrationRegistry;
-use Automattic\WooCommerce\Blocks\Payments\PaymentMethodRegistry;
-use Payu\PaymentGateway\Blocks\CreditWidget\CartCreditWidgetBlock;
-use Payu\PaymentGateway\Blocks\CreditWidget\CheckoutCreditWidgetBlock;
-use Payu\PaymentGateway\Blocks\PayuBlikBlock;
-use Payu\PaymentGateway\Blocks\PayuCreditCardBlock;
-use Payu\PaymentGateway\Blocks\PayuGooglePayBlock;
-use Payu\PaymentGateway\Blocks\PayuInstallmentsBlock;
-use Payu\PaymentGateway\Blocks\PayuKlarnaBlock;
-use Payu\PaymentGateway\Blocks\PayuPragmaBlock;
-use Payu\PaymentGateway\Blocks\PayuListBanksBlock;
-use Payu\PaymentGateway\Blocks\PayuPaypoBlock;
-use Payu\PaymentGateway\Blocks\PayuSecureFormBlock;
-use Payu\PaymentGateway\Blocks\PayuStandardBlock;
-use Payu\PaymentGateway\Blocks\PayuTwistoPlBlock;
-use Payu\PaymentGateway\Blocks\PayuTwistoSliceBlock;
 use Payu\PaymentGateway\Gateways\WC_Gateway_PayuInstallments;
 use Payu\PaymentGateway\Gateways\WC_Payu_Gateways;
 use Payu\PaymentGateway\Gateways\WC_PayuCreditGateway;
@@ -38,7 +22,7 @@ use Payu\PaymentGateway\WC_Payu;
 
 require __DIR__ . '/vendor/autoload.php';
 
-define( 'PAYU_PLUGIN_VERSION', '2.10.3' );
+define( 'PAYU_PLUGIN_VERSION', '2.11.0' );
 define( 'PAYU_PLUGIN_FILE', __FILE__ );
 
 define( 'WC_PAYU_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
@@ -46,13 +30,12 @@ define( 'WC_PAYU_PLUGIN_URL', trailingslashit( plugins_url( basename( WC_PAYU_PL
 
 add_action( 'plugins_loaded', 'upgrade_gateway_payu' );
 add_action( 'plugins_loaded', 'init_gateway_payu' );
-add_action( 'woocommerce_blocks_loaded', 'on_woocommerce_blocks_loaded' );
 add_action( 'admin_init', 'on_admin_init' );
 
 add_action(
 	'before_woocommerce_init',
 	function () {
-		if ( class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
+        if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
 			\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__ );
 			\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'cart_checkout_blocks', __FILE__ );
 		}
@@ -69,48 +52,6 @@ function payu_get_default_settings(): array {
             'credit_widget_on_cart_page'           => 'yes',
             'credit_widget_on_checkout_page'       => 'yes'
     ];
-}
-
-function on_woocommerce_blocks_loaded() {
-	init_payu_blocks();
-	init_credit_widget_blocks();
-}
-
-function init_payu_blocks() {
-	if ( class_exists( 'Automattic\WooCommerce\Blocks\Payments\Integrations\AbstractPaymentMethodType' ) ) {
-		add_action(
-			'woocommerce_blocks_payment_method_type_registration',
-			function ( PaymentMethodRegistry $payment_method_registry ) {
-				$payment_method_registry->register( new PayuStandardBlock() );
-				$payment_method_registry->register( new PayuListBanksBlock() );
-				$payment_method_registry->register( new PayuCreditCardBlock() );
-				$payment_method_registry->register( new PayuSecureFormBlock() );
-				$payment_method_registry->register( new PayuPaypoBlock() );
-				$payment_method_registry->register( new PayuKlarnaBlock() );
-				$payment_method_registry->register( new PayuTwistoPlBlock() );
-				$payment_method_registry->register( new PayuTwistoSliceBlock() );
-				$payment_method_registry->register( new PayuInstallmentsBlock() );
-				$payment_method_registry->register( new PayuBlikBlock() );
-				$payment_method_registry->register( new PayuPragmaBlock() );
-				$payment_method_registry->register( new PayuGooglePayBlock() );
-			}
-		);
-	}
-}
-
-function init_credit_widget_blocks() {
-	if ( interface_exists( 'Automattic\WooCommerce\Blocks\Integrations\IntegrationInterface' ) ) {
-		add_action( 'woocommerce_blocks_cart_block_registration',
-			function ( IntegrationRegistry $integration_registry ) {
-				$integration_registry->register( new CartCreditWidgetBlock() );
-			}
-		);
-		add_action( 'woocommerce_blocks_checkout_block_registration',
-			function ( IntegrationRegistry $integration_registry ) {
-				$integration_registry->register( new CheckoutCreditWidgetBlock() );
-			}
-		);
-	}
 }
 
 function init_gateway_payu() {

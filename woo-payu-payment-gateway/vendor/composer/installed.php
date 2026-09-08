@@ -1,8 +1,8 @@
 <?php return array(
     'root' => array(
         'name' => 'payu/payment_gateway',
-        'pretty_version' => '2.10.3',
-        'version' => '2.10.3.0',
+        'pretty_version' => '2.11.0',
+        'version' => '2.11.0.0',
         'reference' => null,
         'type' => 'woocommerce-plugin',
         'install_path' => __DIR__ . '/../../',
@@ -11,17 +11,17 @@
     ),
     'versions' => array(
         'openpayu/openpayu' => array(
-            'pretty_version' => '2.4.2',
-            'version' => '2.4.2.0',
-            'reference' => 'f6fb871d373b5b2f451608206771d2da7a2cd67d',
+            'pretty_version' => '2.4.4',
+            'version' => '2.4.4.0',
+            'reference' => '01c311fa27fc4165c52b22db6fc87e30d36f224d',
             'type' => 'library',
             'install_path' => __DIR__ . '/../openpayu/openpayu',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
         'payu/payment_gateway' => array(
-            'pretty_version' => '2.10.3',
-            'version' => '2.10.3.0',
+            'pretty_version' => '2.11.0',
+            'version' => '2.11.0.0',
             'reference' => null,
             'type' => 'woocommerce-plugin',
             'install_path' => __DIR__ . '/../../',
