@@ -1,1 +1,14 @@
-<?php return array('dependencies' => array('react-jsx-runtime', 'wc-blocks-components', 'wc-blocks-data-store', 'wc-blocks-registry', 'wc-settings', 'wp-data', 'wp-element', 'wp-html-entities', 'wp-i18n'), 'version' => '5b4445c9d9fde3d4a945');
+<?php return array(
+	'dependencies' => array(
+		'react-jsx-runtime',
+		'wc-blocks-components',
+		'wc-blocks-data-store',
+		'wc-blocks-registry',
+		'wc-settings',
+		'wp-data',
+		'wp-element',
+		'wp-html-entities',
+		'wp-i18n'
+	),
+	'version' => '5b4445c9d9fde3d4a945'
+);
